@@ -214,7 +214,7 @@ export default function Form() {
         />
 
         <div>
-          <label className="block mb-1 font-medium text-gray-700 dark:text-gray-200"> CV File (pdf) </label>
+          <label className="block mb-1 font-medium text-gray-700 dark:text-gray-200">CV (PDF)</label>
           <input
             type="file"
             accept=".pdf"
@@ -222,16 +222,27 @@ export default function Form() {
             required
             className="w-full"
           />
+          {cvFile && (
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+              ✅ Fichier sélectionné : <strong>{cvFile.name}</strong>
+            </p>
+          )}
         </div>
 
+
         <div>
-          <label className="block mb-1 font-medium text-gray-700 dark:text-gray-200"> Motivation File (doc / docx) </label>
+          <label className="block mb-1 font-medium text-gray-700 dark:text-gray-200">Lettre de motivation (DOC/DOCX)</label>
           <input
             type="file"
             accept=".doc,.docx"
             onChange={e => setMotivationFile(e.target.files?.[0] ?? null)}
             className="w-full"
           />
+          {motivationFile && (
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+              ✅ Fichier sélectionné : <strong>{motivationFile.name}</strong>
+            </p>
+          )}
         </div>
 
         <button
