@@ -1,5 +1,10 @@
-const API_URL = process.env.NEXT_PUBLIC_JARVI_API_URL || ''
-const API_KEY = process.env.JARVI_API_KEY || ''
+const API_URL = process.env.NEXT_PUBLIC_JARVI_API_URL
+const API_KEY = process.env.NEXT_PUBLIC_JARVI_API_KEY
+
+if (!API_URL || !API_KEY) {
+  throw new Error('API URL or API KEY not set in env variables.')
+}
+
 
 // Type of upload files
 export interface JarviFile {
@@ -39,7 +44,7 @@ export interface ApplicationPayload {
  */
 
 export async function postApplication(data: ApplicationPayload) {
-  
+
   if (!API_URL || !API_KEY) throw new Error('API URL or API KEY not set in env variables.')
 
   const response = await fetch(API_URL, {
